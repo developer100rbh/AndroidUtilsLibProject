@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toast_msg_height">50dp</dimen>
+    <dimen name="toast_icon_msg_width">40dp</dimen>
+    <dimen name="toast_icon_msg_height">40dp</dimen>
+    <dimen name="toast_padding">5dp</dimen>
+    <dimen name="toast_title_text_size">15sp</dimen>
+    <dimen name="toast_msg_text_size">14sp</dimen>
+
+</resources>

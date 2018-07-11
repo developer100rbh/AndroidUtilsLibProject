@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#dd4b00</color>
+    <color name="colorPrimaryDark">#cc3a00</color>
+    <color name="colorAccent">#ff6d00</color>
+
+    <color name="tc_toast_success">#FF50AE00</color>
+    <color name="tc_toast_fail">#FFAE2020</color>
+    <color name="tc_toast_alert">#FFF5740B</color>
+
+    <color name="trans_black">#55000000</color>
+
+    <color name="alert_toast_back">#AA000000</color>
+
+    <color name="orange">#ff6d00</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="colorAstro">#77c8bb9f</color>
+    <color name="gray_5">#dddddd</color>
+    <color name="gray_3">#EEEEEE</color>
+    <color name= "transparent">#00000000</color>
+    <color name="translucent">#99999999</color>
+
+    <color name="text_color_dark_gray">#FF424242</color>
+
+</resources>
