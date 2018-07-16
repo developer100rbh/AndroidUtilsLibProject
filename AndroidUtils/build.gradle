@@ -22,5 +22,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:support-v4:${rootProject.ext.SUPPORT_API_VERSION}"
+    api "com.android.support:support-v4:${rootProject.ext.SUPPORT_API_VERSION}"
+    api 'com.google.code.gson:gson:2.8.5'
 }

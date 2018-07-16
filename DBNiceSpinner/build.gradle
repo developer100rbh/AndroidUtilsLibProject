@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.developer100rbh'
+
+android {
+   compileSdkVersion rootProject.ext.COMPILE_SDK
+    defaultConfig {
+         minSdkVersion rootProject.ext.MIN_SDK
+        targetSdkVersion rootProject.ext.TARGET_SDK
+    }
+}
+
+dependencies {
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.SUPPORT_API_VERSION}"
+    api 'com.intuit.sdp:sdp-android:1.0.5'
+    api 'com.intuit.ssp:ssp-android:1.0.5'
+}

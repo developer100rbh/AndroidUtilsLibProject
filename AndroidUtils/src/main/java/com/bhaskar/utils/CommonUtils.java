@@ -2576,4 +2576,14 @@ public class CommonUtils {
         }
         return query_pairs;
     }
+
+    /**
+     * This method will be used to decode Base64 response
+     *
+     * @param response
+     * @return
+     */
+    public static String decodeBase64Response(String response) {
+        return new String(Base64.decode(response, Base64.DEFAULT));
+    }
 }

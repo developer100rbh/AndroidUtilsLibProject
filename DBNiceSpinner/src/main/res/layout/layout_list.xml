@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:scrollbarThumbVertical="@drawable/scrollbar_track"
+    android:layout_height="match_parent"/>
+
+<!--
+</ListView>
+
+    listView.setDivider(new ColorDrawable(getResources().getColor(R.color.popup_divider_color)));
+    listView.setDividerHeight(getResources().getDimensionPixelSize(R.dimen.spinner_divider_height));
+    listView.setItemsCanFocus(true);
+    //hide vertical and horizontal scrollbars
+    listView.setVerticalScrollBarEnabled(true);
+    listView.setHorizontalScrollBarEnabled(false);
+    listView.setVerticalFadingEdgeEnabled(false);-->

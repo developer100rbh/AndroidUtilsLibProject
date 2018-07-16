@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="alert_title_exception">Exception!</string>
-    <string name="alert_title_error">Error!</string>
+    <string name="alert_title_exception">एरर!</string>
+    <!--<string name="alert_title_error">Error!</string>
     <string name="alert_title_success">Success</string>
     <string name="alert_title_failed">Failed!</string>
     <string name="alert_title_alert">Alert!</string>
 
     <string name="alert_network_not_exist">Network Unavailable.\nPlease Check Network Connection.</string>
-    <string name="alert_api_failed">Error in Getting Result. Please try after some time.</string>
+    <string name="alert_api_failed">Error in Getting Result. Please try after some time.</string>-->
+
+    <string name="alert_title_error">एरर!</string>
+    <string name="alert_title_success">सफल</string>
+    <string name="alert_title_failed">असफल!</string>
+    <string name="alert_title_alert">अलर्ट!</string>
+
+    <string name="alert_network_not_exist">नेटवर्क उपलब्ध नहीं है,\nकृपया नेटवर्क कनेक्शन चेक करें.</string>
+    <string name="alert_api_failed">डाटा प्राप्त करने में अक्षम.\nकृपया कुछ समय बाद फिर प्रयास करें.</string>
+
 </resources>

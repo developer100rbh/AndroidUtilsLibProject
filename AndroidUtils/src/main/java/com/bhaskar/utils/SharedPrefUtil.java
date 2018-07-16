@@ -1,6 +1,9 @@
 package com.bhaskar.utils;
 
 import android.content.SharedPreferences;
+import android.text.TextUtils;
+
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -137,37 +140,37 @@ public class SharedPrefUtil {
         return sp.getBoolean(key, defaultValue);
     }
 
-//    /**
-//     * @param sp
-//     * @param key
-//     * @param object
-//     * @param objectClass
-//     */
-//    public static void addObjectInGsonString(SharedPreferences sp, String key, Object object, Class objectClass) {
-//        if (object != null) {
-//            String gsonString = new GsonBuilder().create().toJson(object, objectClass);
-//            SharedPreferences.Editor ed = sp.edit();
-//            ed.putString(key, gsonString);
-//            ed.apply();
-//        }
-//    }
-//
-//    /**
-//     * @param sp
-//     * @param key
-//     * @param objectClass
-//     * @param <T>
-//     * @return
-//     */
-//    public static <T extends Object> T getObjectFromGsonString(SharedPreferences sp, String key, Class<T> objectClass) {
-//
-//        String gsonString = sp.getString(key, "");
-//        if (TextUtils.isEmpty(gsonString)) {
-//            return null;
-//        } else {
-//            return new GsonBuilder().create().fromJson(gsonString, objectClass);
-//        }
-//    }
+    /**
+     * @param sp
+     * @param key
+     * @param object
+     * @param objectClass
+     */
+    public static void addObjectInGsonString(SharedPreferences sp, String key, Object object, Class objectClass) {
+        if (object != null) {
+            String gsonString = new GsonBuilder().create().toJson(object, objectClass);
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putString(key, gsonString);
+            ed.apply();
+        }
+    }
+
+    /**
+     * @param sp
+     * @param key
+     * @param objectClass
+     * @param <T>
+     * @return
+     */
+    public static <T extends Object> T getObjectFromGsonString(SharedPreferences sp, String key, Class<T> objectClass) {
+
+        String gsonString = sp.getString(key, "");
+        if (TextUtils.isEmpty(gsonString)) {
+            return null;
+        } else {
+            return new GsonBuilder().create().fromJson(gsonString, objectClass);
+        }
+    }
 
     /**
      * @param sp
