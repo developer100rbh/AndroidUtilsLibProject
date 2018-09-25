@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#dd4b00</color>
     <color name="colorPrimaryDark">#cc3a00</color>
-    <color name="colorAccent">#ff6d00</color>
+    <color name="colorAccent">@color/orange</color>
 
     <color name="tc_toast_success">#FF50AE00</color>
     <color name="tc_toast_fail">#FFAE2020</color>
@@ -12,15 +12,26 @@
 
     <color name="alert_toast_back">#AA000000</color>
 
-    <color name="orange">#ff6d00</color>
+    <color name="orange">#dd7000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="colorAstro">#77c8bb9f</color>
     <color name="gray_5">#dddddd</color>
     <color name="gray_3">#EEEEEE</color>
     <color name= "transparent">#00000000</color>
     <color name="translucent">#99999999</color>
 
     <color name="text_color_dark_gray">#FF424242</color>
+
+
+    <color name="name_ranbow_violet">#9400D3</color>
+    <color name="name_ranbow_indigo">#4B0082</color>
+    <color name="name_ranbow_blue">#0000FF</color>
+    <color name="name_ranbow_green">#00FF00</color>
+    <color name="name_ranbow_yellow">#FFFF00</color>
+    <color name="name_ranbow_orange">#FF7F00</color>
+    <color name="name_ranbow_red">#FF0000</color>
+
+
+
 
 </resources>

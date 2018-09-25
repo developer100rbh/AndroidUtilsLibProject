@@ -26,27 +26,36 @@ public final class DialogUtils {
     public static void showInfoDialog(final Activity activity,
                                       final String message) {
 
-        AlertDialog.Builder builder = null;
-        if (activity.getParent() != null)
-            builder = new AlertDialog.Builder(activity.getParent());
-        else
-            builder = new AlertDialog.Builder(activity);
+        try {
+            if (activity != null && !activity.isFinishing()) {
 
-        // builder.setTitle("Alert!");
-        builder.setIcon(DIALOG_ICON);
-        if (message != null)
-            builder.setMessage(message);
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                Runtime.getRuntime().gc();
+                // builder.setTitle("Alert!");
+                builder.setIcon(DIALOG_ICON);
+                if (message != null)
+                    builder.setMessage(message);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!activity.isFinishing()) {
+                            dialog.dismiss();
+                        }
+                        Runtime.getRuntime().gc();
+                    }
+                });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
             }
-        });
-        AlertDialog msg = builder.create();
-
-        msg.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -58,40 +67,50 @@ public final class DialogUtils {
      */
     public static void showInfoDialog(final Activity activity,
                                       final String title, final String message) {
-        AlertDialog.Builder builder = null;
-        if (activity.getParent() != null)
-            builder = new AlertDialog.Builder(activity.getParent());
-        else
-            builder = new AlertDialog.Builder(activity);
 
-        if (title != null) {
-            builder.setTitle(title);
+        try {
+            if (activity != null && !activity.isFinishing()) {
 
-            if (title.equals(activity.getString(R.string.alert_title_exception))) {
-                builder.setIcon(R.drawable.ic_alert);
-            } else if (title.equals(activity.getString(R.string.alert_title_error))) {
-                builder.setIcon(R.drawable.ic_fail);
-            } else if (title.equals(activity.getString(R.string.alert_title_success))) {
-                builder.setIcon(R.drawable.ic_success);
-            } else {
-                builder.setIcon(DIALOG_ICON);
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
+
+                if (title != null) {
+                    builder.setTitle(title);
+
+                    if (title.equals(activity.getString(R.string.alert_title_exception))) {
+                        builder.setIcon(R.drawable.ic_alert);
+                    } else if (title.equals(activity.getString(R.string.alert_title_error))) {
+                        builder.setIcon(R.drawable.ic_fail);
+                    } else if (title.equals(activity.getString(R.string.alert_title_success))) {
+                        builder.setIcon(R.drawable.ic_success);
+                    } else {
+                        builder.setIcon(DIALOG_ICON);
+                    }
+                } else {
+                    builder.setIcon(DIALOG_ICON);
+                }
+                if (message != null)
+                    builder.setMessage(message);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!activity.isFinishing()) {
+                            dialog.dismiss();
+                        }
+                        Runtime.getRuntime().gc();
+                    }
+                });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
             }
-        } else {
-            builder.setIcon(DIALOG_ICON);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if (message != null)
-            builder.setMessage(message);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                Runtime.getRuntime().gc();
-            }
-        });
-        AlertDialog msg = builder.create();
-
-        msg.show();
     }
 
     /**
@@ -101,44 +120,52 @@ public final class DialogUtils {
      * @param dialogOkInterface
      */
     public static void showInfoDialog(final Activity activity,
-                                      final String title, final String message,final DialogOkInterface dialogOkInterface) {
-        AlertDialog.Builder builder = null;
-        if (activity.getParent() != null)
-            builder = new AlertDialog.Builder(activity.getParent());
-        else
-            builder = new AlertDialog.Builder(activity);
+                                      final String title, final String message, final DialogOkInterface dialogOkInterface) {
+        try {
+            if (activity != null && !activity.isFinishing()) {
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-        if (title != null) {
-            builder.setTitle(title);
+                if (title != null) {
+                    builder.setTitle(title);
 
-            if (title.equals(activity.getString(R.string.alert_title_exception))) {
-                builder.setIcon(R.drawable.ic_alert);
-            } else if (title.equals(activity.getString(R.string.alert_title_error))) {
-                builder.setIcon(R.drawable.ic_fail);
-            } else if (title.equals(activity.getString(R.string.alert_title_success))) {
-                builder.setIcon(R.drawable.ic_success);
-            } else {
-                builder.setIcon(DIALOG_ICON);
-            }
-        } else {
-            builder.setIcon(DIALOG_ICON);
-        }
-        if (message != null)
-            builder.setMessage(message);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                Runtime.getRuntime().gc();
-                if (null != dialogOkInterface) {
-                    dialogOkInterface.doOnOkBtnClick(activity);
+                    if (title.equals(activity.getString(R.string.alert_title_exception))) {
+                        builder.setIcon(R.drawable.ic_alert);
+                    } else if (title.equals(activity.getString(R.string.alert_title_error))) {
+                        builder.setIcon(R.drawable.ic_fail);
+                    } else if (title.equals(activity.getString(R.string.alert_title_success))) {
+                        builder.setIcon(R.drawable.ic_success);
+                    } else {
+                        builder.setIcon(DIALOG_ICON);
+                    }
+                } else {
+                    builder.setIcon(DIALOG_ICON);
                 }
-            }
-        });
-        AlertDialog msg = builder.create();
+                if (message != null)
+                    builder.setMessage(message);
 
-        msg.show();
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!activity.isFinishing()) {
+                            dialog.dismiss();
+                        }
+                        Runtime.getRuntime().gc();
+                        if (null != dialogOkInterface) {
+                            dialogOkInterface.doOnOkBtnClick(activity);
+                        }
+                    }
+                });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -153,52 +180,62 @@ public final class DialogUtils {
     public static void showInfoDialogWithTwoButtons(final Activity activity,
                                                     final String title, final String message, final String buttonOK,
                                                     final String buttonCancel) {
-        AlertDialog.Builder builder = null;
-        if (activity.getParent() != null)
-            builder = new AlertDialog.Builder(activity.getParent());
-        else
-            builder = new AlertDialog.Builder(activity);
+        try {
+            if (activity != null && !activity.isFinishing()) {
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
 
-        if (title != null) {
-            builder.setTitle(title);
+                if (title != null) {
+                    builder.setTitle(title);
 
-            if (title.equals(activity.getString(R.string.alert_title_exception))) {
-                builder.setIcon(R.drawable.ic_alert);
-            } else if (title.equals(activity.getString(R.string.alert_title_error))) {
-                builder.setIcon(R.drawable.ic_fail);
-            } else if (title.equals(activity.getString(R.string.alert_title_success))) {
-                builder.setIcon(R.drawable.ic_success);
-            } else {
-                builder.setIcon(DIALOG_ICON);
+                    if (title.equals(activity.getString(R.string.alert_title_exception))) {
+                        builder.setIcon(R.drawable.ic_alert);
+                    } else if (title.equals(activity.getString(R.string.alert_title_error))) {
+                        builder.setIcon(R.drawable.ic_fail);
+                    } else if (title.equals(activity.getString(R.string.alert_title_success))) {
+                        builder.setIcon(R.drawable.ic_success);
+                    } else {
+                        builder.setIcon(DIALOG_ICON);
+                    }
+                } else {
+                    builder.setIcon(DIALOG_ICON);
+                }
+
+                if (message != null)
+                    builder.setMessage(message);
+
+                builder.setPositiveButton(buttonOK,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (!activity.isFinishing()) {
+                                    dialog.dismiss();
+                                }
+                                Runtime.getRuntime().gc();
+                            }
+                        });
+
+                builder.setNegativeButton(buttonCancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (!activity.isFinishing()) {
+                                    dialog.dismiss();
+                                }
+                                Runtime.getRuntime().gc();
+                            }
+                        });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
             }
-        } else {
-            builder.setIcon(DIALOG_ICON);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        if (message != null)
-            builder.setMessage(message);
-
-        builder.setPositiveButton(buttonOK,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Runtime.getRuntime().gc();
-                    }
-                });
-
-        builder.setNegativeButton(buttonCancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Runtime.getRuntime().gc();
-                    }
-                });
-        AlertDialog msg = builder.create();
-
-        msg.show();
     }
 
     /**
@@ -210,29 +247,33 @@ public final class DialogUtils {
     public static void showFinishDialog(final Activity activity,
                                         final String message) {
         try {
-            AlertDialog.Builder builder = null;
-            if (activity.getParent() != null)
-                builder = new AlertDialog.Builder(activity.getParent());
-            else
-                builder = new AlertDialog.Builder(activity);
+            if (activity != null && !activity.isFinishing()) {
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-            builder.setCancelable(false);
-            builder.setIcon(DIALOG_ICON);
-            if (message != null)
-                builder.setMessage(message);
+                builder.setCancelable(false);
+                builder.setIcon(DIALOG_ICON);
+                if (message != null)
+                    builder.setMessage(message);
 
-            builder.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            Runtime.getRuntime().gc();
-                            activity.finish();
-                        }
-                    });
-            AlertDialog msg = builder.create();
-
-            msg.show();
+                builder.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (!activity.isFinishing()) {
+                                    dialog.dismiss();
+                                }
+                                Runtime.getRuntime().gc();
+                                activity.finish();
+                            }
+                        });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -249,73 +290,35 @@ public final class DialogUtils {
     public static void showFinishDialog(final Activity activity,
                                         final String title, final String message) {
         try {
-            AlertDialog.Builder builder = null;
-            if (activity.getParent() != null)
-                builder = new AlertDialog.Builder(activity.getParent());
-            else
-                builder = new AlertDialog.Builder(activity);
+            if (activity != null && !activity.isFinishing()) {
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-            if (title != null)
-                builder.setTitle(title);
-            builder.setCancelable(false);
-            builder.setIcon(DIALOG_ICON);
-            if (message != null)
-                builder.setMessage(message);
+                if (title != null)
+                    builder.setTitle(title);
+                builder.setCancelable(false);
+                builder.setIcon(DIALOG_ICON);
+                if (message != null)
+                    builder.setMessage(message);
 
-            builder.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            Runtime.getRuntime().gc();
-                            activity.finish();
-                        }
-                    });
-            AlertDialog msg = builder.create();
-
-            msg.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * **
-     * To show Dialog with message and pop current fragment when tap on Ok
-     *
-     * @param fActivity
-     * @param title
-     * @param message
-     */
-    public static void showFinishFragmentDialog(
-            final FragmentActivity fActivity, final String title,
-            final String message) {
-        try {
-            AlertDialog.Builder builder = null;
-            if (fActivity.getParent() != null)
-                builder = new AlertDialog.Builder(fActivity.getParent());
-            else
-                builder = new AlertDialog.Builder(fActivity);
-
-            if (title != null)
-                builder.setTitle(title);
-            builder.setCancelable(false);
-            builder.setIcon(DIALOG_ICON);
-            if (message != null)
-                builder.setMessage(message);
-
-            builder.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            Runtime.getRuntime().gc();
-                            fActivity.getSupportFragmentManager()
-                                    .popBackStackImmediate();
-                        }
-                    });
-            AlertDialog msg = builder.create();
-            msg.show();
+                builder.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (!activity.isFinishing()) {
+                                    dialog.dismiss();
+                                }
+                                Runtime.getRuntime().gc();
+                                activity.finish();
+                            }
+                        });
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -342,49 +345,56 @@ public final class DialogUtils {
                                               final DialogResponseInterface dialogResponseInterface) {
 
         try {
-            AlertDialog.Builder builder = null;
-            if (activity.getParent() != null)
-                builder = new AlertDialog.Builder(activity.getParent());
-            else
-                builder = new AlertDialog.Builder(activity);
+            if (activity != null && !activity.isFinishing()) {
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-            if (title != null)
-                builder.setTitle(title);
-            builder.setCancelable(isCancelable);
+                if (title != null)
+                    builder.setTitle(title);
+                builder.setCancelable(isCancelable);
 
-            if (iconResId == ICON_DEFAULT) {
-                builder.setIcon(DIALOG_ICON);
-            } else {
-                builder.setIcon(iconResId);
+                if (iconResId == ICON_DEFAULT) {
+                    builder.setIcon(DIALOG_ICON);
+                } else {
+                    builder.setIcon(iconResId);
+                }
+                if (message != null)
+                    builder.setMessage(message);
+
+                if (negativeBtnName != null) {
+                    builder.setPositiveButton(negativeBtnName,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    if (!activity.isFinishing()) {
+                                        dialog.dismiss();
+                                    }
+                                    dialogResponseInterface.doOnNegativeBtnClick(activity);
+                                }
+                            });
+                }
+                if (positiveBtnName != null) {
+                    builder.setNegativeButton(positiveBtnName,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    if (!activity.isFinishing()) {
+                                        dialog.dismiss();
+                                    }
+                                    dialogResponseInterface.doOnPositiveBtnClick(activity);
+                                }
+                            });
+                }
+
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
             }
-            if (message != null)
-                builder.setMessage(message);
-
-            if (negativeBtnName != null) {
-                builder.setPositiveButton(negativeBtnName,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                                dialogResponseInterface.doOnNegativeBtnClick(activity);
-                            }
-                        });
-            }
-            if (positiveBtnName != null) {
-                builder.setNegativeButton(positiveBtnName,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                                dialogResponseInterface.doOnPositiveBtnClick(activity);
-                            }
-                        });
-            }
-
-            AlertDialog msg = builder.create();
-            msg.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -413,56 +423,66 @@ public final class DialogUtils {
                                               final DialogResponsesInterface dialogResponseInterface) {
 
         try {
-            AlertDialog.Builder builder = null;
-            if (activity.getParent() != null)
-                builder = new AlertDialog.Builder(activity.getParent());
-            else
-                builder = new AlertDialog.Builder(activity);
+            if (activity != null && !activity.isFinishing()) {
 
-            if (title != null)
-                builder.setTitle(title);
-            builder.setCancelable(isCancelable);
-            builder.setIcon(iconResId);
-            if (message != null)
-                builder.setMessage(message);
+                AlertDialog.Builder builder = null;
+                if (activity.getParent() != null)
+                    builder = new AlertDialog.Builder(activity.getParent());
+                else
+                    builder = new AlertDialog.Builder(activity);
 
-            if (neturalBtnName != null) {
-                builder.setNeutralButton(neturalBtnName,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                                dialogResponseInterface.doOnNeutralBtnClick(activity);
-                            }
-                        });
+                if (title != null)
+                    builder.setTitle(title);
+                builder.setCancelable(isCancelable);
+                builder.setIcon(iconResId);
+                if (message != null)
+                    builder.setMessage(message);
+
+                if (neturalBtnName != null) {
+                    builder.setNeutralButton(neturalBtnName,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    if (!activity.isFinishing()) {
+                                        dialog.dismiss();
+                                    }
+                                    dialogResponseInterface.doOnNeutralBtnClick(activity);
+                                }
+                            });
+                }
+
+                if (negativeBtnName != null) {
+                    builder.setPositiveButton(negativeBtnName,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    if (!activity.isFinishing()) {
+                                        dialog.dismiss();
+                                    }
+                                    dialogResponseInterface.doOnNegativeBtnClick(activity);
+                                }
+                            });
+                }
+                if (positiveBtnName != null) {
+                    builder.setNegativeButton(positiveBtnName,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    if (!activity.isFinishing()) {
+                                        dialog.dismiss();
+                                    }
+                                    dialogResponseInterface.doOnPositiveBtnClick(activity);
+                                }
+                            });
+                }
+
+                AlertDialog msg = builder.create();
+                msg.setCancelable(false);
+                msg.show();
             }
-
-            if (negativeBtnName != null) {
-                builder.setPositiveButton(negativeBtnName,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                                dialogResponseInterface.doOnNegativeBtnClick(activity);
-                            }
-                        });
-            }
-            if (positiveBtnName != null) {
-                builder.setNegativeButton(positiveBtnName,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                dialog.dismiss();
-                                dialogResponseInterface.doOnPositiveBtnClick(activity);
-                            }
-                        });
-            }
-
-            AlertDialog msg = builder.create();
-            msg.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -503,7 +523,7 @@ public final class DialogUtils {
      */
     public static void dismissProgressDialog() {
         try {
-            if (pd != null && pd.isShowing()) {
+            if (pd != null && pd.isShowing() && pd.getOwnerActivity() != null && !pd.getOwnerActivity().isFinishing()) {
                 pd.dismiss();
                 pd = null;
             }

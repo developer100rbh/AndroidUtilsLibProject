@@ -267,7 +267,7 @@ public class CommonUtils {
                                       final String TAG, final int frameLayoutId) {
         transaction.add(frameLayoutId, fragment, TAG);
         transaction.addToBackStack(TAG);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
     }
 
     /**

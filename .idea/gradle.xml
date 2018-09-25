@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AndroidUtils" />
-            <option value="$PROJECT_DIR$/DBNiceSpinner" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

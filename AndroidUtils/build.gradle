@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.developer100rbh'
+/*apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.developer100rbh'*/
 
 android {
     compileSdkVersion rootProject.ext.COMPILE_SDK
@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.MIN_SDK
         targetSdkVersion rootProject.ext.TARGET_SDK
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
     }
 
     buildTypes {
@@ -24,4 +24,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api "com.android.support:support-v4:${rootProject.ext.SUPPORT_API_VERSION}"
     api 'com.google.code.gson:gson:2.8.5'
+    //api 'com.plattysoft.leonids:LeonidsLib:1.3.2'
 }
