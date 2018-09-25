@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.CheckedTextView;
 
-import com.dainik.bhaskar.fitness.R;
+import com.bhaskar.utils.R;
 
 
 public class FontIconView extends CheckedTextView {

@@ -23,7 +23,7 @@ import android.view.AbsSavedState;
 import android.view.InflateException;
 import android.view.View;
 
-import com.dainik.bhaskar.fitness.R;
+import com.bhaskar.utils.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

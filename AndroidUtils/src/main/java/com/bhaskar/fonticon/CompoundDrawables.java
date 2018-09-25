@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.dainik.bhaskar.fitness.R;
+import com.bhaskar.utils.R;
 
 
 public class CompoundDrawables {
